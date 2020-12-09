@@ -1,0 +1,45 @@
+import random
+
+p = 0
+pc = 0
+
+while p <= 3 or pc <= 3:
+    l = ["✌🏽", "🖐🏽", "👊🏽"]
+    s = random.choice(l)
+    if s == l[0]:
+        c = input("choose rock👊🏽, paper🖐🏽, scissor✌🏽")
+        if c == "rock":
+            print("Yeaaah you get a point",p,pc)
+            p = p + 1
+        elif c == "paper":
+            print("aaah you lost a point",p,pc)
+            pc = pc + 1
+        else:
+            print("okay, it's tie",p,pc)
+
+    if s == l[1]:
+        c = input("choose rock👊🏽, paper🖐🏽, scissor✌🏽")
+        if c == "rock":
+            print("aaah you lost a point",p,pc)
+            pc = pc + 1
+        elif c == "scissor":
+            print("Yeaaah you get a point",p,pc)
+            p = p + 1
+        else:
+            print("okay, it's tie",p,pc)
+
+    if s == l[2]:
+        c = input("choose rock👊🏽, paper🖐🏽, scissor✌🏽")
+        if c == "scissor":
+            print("aaah you lost a point",p,pc)
+            pc = pc + 1
+        elif c == "paper":
+            print("Yeaaah you get a point",p,pc)
+            p = p + 1
+        else:
+            print("okay, it's tie",p,pc)
+
+if p == 3:
+    print("wohoo you won")
+else:
+    print("better luck next time!")
