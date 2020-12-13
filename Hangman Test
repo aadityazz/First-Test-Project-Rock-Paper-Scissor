@@ -1,0 +1,36 @@
+import random
+
+l = ['master', 'python', 'building', 'animated', 'videos']
+l1 = []
+n = list(random.choice(l))
+print(n)
+m = len(n)
+
+for k in range(0, m):
+    l1.append("_")
+
+def funo():
+
+    try:
+        for i in range(0, m + 1):
+
+            def funt():
+                l1[i] = n[i]
+
+            if w in n[i]:
+                funt()
+
+    except:
+        print(l1)
+
+for j in range(0, 7):
+    print("you have changes left", 6 - j)
+    w = input('Enter letter')
+    funo()
+
+
+if l1 == n:
+    print("you won")
+
+else:
+    print(" better luck next time")
