@@ -1,0 +1,88 @@
+import random
+
+letr = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v',
+        'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R',
+        'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
+
+symbols = ['!', '#', '$', '%', '&', '(', ')', '*', '+']
+
+key = 9
+s = 0
+
+l1 = []
+l3 = []
+l4 = []
+
+un = input("enter your no.")
+sn = input('enter sending no.')
+message = input("enter your message")
+
+
+def chooseRandom(x, y):
+    for j in range(0, 4):
+        s = random.choice(x)
+        y.append(s)
+
+
+chooseRandom(un, l3)
+chooseRandom(sn, l4)
+
+l = l3 + l4
+
+for k in range(0, len(l)):
+    s = s + int(l[k])
+
+
+for i in message:
+    for u in i:
+        l1.append(u)
+
+for h in range(0, len(l1)):
+    if l1[h] == ' ':
+        l1[h] = random.choice(symbols)
+    else:
+        l1[h] = letr[s - h - key]
+
+l2 = l + l1
+
+str1 = ""
+
+for ele in l2:
+    str1 += ele
+
+print("your encyprted message", str1)
+
+# =======================================================================================================================
+
+# Decryption
+
+encryp = input("enter you encrypted message")
+k = int(input('enter your key'))
+p = 0
+enc = list(encryp)
+
+
+try:
+    for ie in (0, len(enc)):
+        while enc[ie] == 0 or 1 or 2 or 3 or 4 or 5 or 6 or 7 or 8 or 9:
+            p = p + int(enc[ie])
+            enc.remove(enc[ie])
+
+except:
+    None
+    
+
+for h in range (0, len(enc)):
+    enc[h]= letr[key +h -p]
+    print(enc)
+
+for ho in range (0, len(enc)):
+    if enc[ho] in symbols:
+        enc[ho] =' '
+
+for ele1 in enc:  
+        str1 += ele1 
+        
+ print(" Decrypted code", str1)
+
+
