@@ -1,21 +1,29 @@
 import random
+import re
+
 
 letr = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v',
         'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R',
         'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n',
-        'o', 'p', 'q', 'r', 's', 't', 'u', 'v','w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J',
-        'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R','S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
+        'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J',
+        'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z','a', 'b', 'c', 'd', 'e', 'f',
+        'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n','o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B',
+        'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J','K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X',
+        'Y', 'Z']
 
 symbols = ['!', '#', '$', '%', '&', '(', ')', '*', '+']
 
 numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0]
 
+
 key = 9
 s = 0
+
 
 l1 = []
 l3 = []
 l4 = []
+
 
 # Encryption............................................................................................................
 
@@ -34,13 +42,17 @@ def chooseRandom(x, y):
 chooseRandom(un, l3)
 chooseRandom(sn, l4)
 
+
 l = l3 + l4
+
 
 for k in range(0, len(l)):
     s = s + int(l[k])
 
+
 for i in message:
     l1.append(i)
+
 
 for h in range(0, len(l1)):
     if l1[h] == ' ':
@@ -53,10 +65,12 @@ for h in range(0, len(l1)):
 
 l2 = l + l1
 
+
 str1 = ""
 
 for ele in l2:
     str1 += ele
+
 
 print("your encyprted message", str1)
 
@@ -69,7 +83,9 @@ encryp = input("enter you encrypted message")
 k = int(input('enter your key'))
 p = 0
 
+
 enc = list(encryp)
+
 
 try:
     for ie in (0, len(enc)):
@@ -88,12 +104,12 @@ for h1 in range(0, len(enc)):
         enc[h1] = letr[new_position1]
 
 
-        # symbols removing
-
-
 str2 = ' '
 
 for ele1 in enc:
     str2 += ele1
 
-print("Decrypted code", str2)
+
+my_new_string = re.sub('[^a-zA-Z0-9 \n\.]', '  ', str2)
+print("decrypted message", my_new_string)
+
