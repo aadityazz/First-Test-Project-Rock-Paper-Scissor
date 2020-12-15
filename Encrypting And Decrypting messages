@@ -2,9 +2,13 @@ import random
 
 letr = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v',
         'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R',
-        'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
+        'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n',
+        'o', 'p', 'q', 'r', 's', 't', 'u', 'v','w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J',
+        'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R','S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
 
 symbols = ['!', '#', '$', '%', '&', '(', ')', '*', '+']
+
+numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0]
 
 key = 9
 s = 0
@@ -13,13 +17,16 @@ l1 = []
 l3 = []
 l4 = []
 
+# Encryption............................................................................................................
+
+
 un = input("enter your no.")
 sn = input('enter sending no.')
 message = input("enter your message")
 
 
 def chooseRandom(x, y):
-    for j in range(0, 4):
+    for j in range(0, 3):
         s = random.choice(x)
         y.append(s)
 
@@ -32,16 +39,17 @@ l = l3 + l4
 for k in range(0, len(l)):
     s = s + int(l[k])
 
-
 for i in message:
-    for u in i:
-        l1.append(u)
+    l1.append(i)
 
 for h in range(0, len(l1)):
     if l1[h] == ' ':
         l1[h] = random.choice(symbols)
-    else:
-        l1[h] = letr[s - h - key]
+
+    if l1[h] in letr:
+        letrposition = letr.index(l1[h])
+        new_position = letrposition + h + s + key
+        l1[h] = letr[new_position]
 
 l2 = l + l1
 
@@ -52,15 +60,16 @@ for ele in l2:
 
 print("your encyprted message", str1)
 
-# =======================================================================================================================
 
+# =======================================================================================================================
 # Decryption
+
 
 encryp = input("enter you encrypted message")
 k = int(input('enter your key'))
 p = 0
-enc = list(encryp)
 
+enc = list(encryp)
 
 try:
     for ie in (0, len(enc)):
@@ -70,19 +79,21 @@ try:
 
 except:
     None
-    
-
-for h in range (0, len(enc)):
-    enc[h]= letr[key +h -p]
-    print(enc)
-
-for ho in range (0, len(enc)):
-    if enc[ho] in symbols:
-        enc[ho] =' '
-
-for ele1 in enc:  
-        str1 += ele1 
-        
- print(" Decrypted code", str1)
 
 
+for h1 in range(0, len(enc)):
+    if enc[h1] in letr:
+        letrposition1 = letr.index(enc[h1])
+        new_position1 = letrposition1 - h1 - s - k
+        enc[h1] = letr[new_position1]
+
+
+        # symbols removing
+
+
+str2 = ' '
+
+for ele1 in enc:
+    str2 += ele1
+
+print("Decrypted code", str2)
