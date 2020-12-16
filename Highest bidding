@@ -1,0 +1,38 @@
+import os                               
+logo = '''
+                         ___________
+                         \         /
+                          )_______(
+                          |"""""""|_.-._,.---------.,_.-._.
+                          |       | | |               | | ''-.
+                          |       |_| |_             _| |_..-'
+                          |_______| '-' `'---------'` '-'
+                          )"""""""(
+                         /_________\\
+                       .-------------.
+                      /_______________\\
+'''
+
+print(logo)
+
+dic = {}
+l = []
+
+ynn = 'y'
+
+while ynn == 'y':
+    name = input("enter you name")
+    bid = int(input("place your bid"))
+    dic[name] = bid
+    ynn = input("Do anyone wants to place a bid y/n?")
+
+    os.system('cls')                    #keep in the mind that this line will not work if you're using IDEs, because its basic function is to clear output screen for other users 
+
+for i in dic:
+    l.append(dic[i])
+
+l.sort()
+
+for j in dic:
+    if dic[j] == l[len(l) - 1]:
+        print("the highest bidder is:", j)
