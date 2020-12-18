@@ -2,10 +2,10 @@ import random
 
 data = [
     {'Instagram': 346}, {'Cristiano Ronaldo': 215}, {'Ariana Grande': 183}, {'Dwayne Johnson': 181},
-    {'Selena Gomez': 174},
-    {'Kylie Jenner': 172}, {'Kim Kardashian': 167}, {'Lionel Messi': 149}, {'Beyoncé': 145}, {'Neymar': 138},
-    {'National Geographic': 135}, {'Justin Bieber': 133}, {'Taylor Swift': 131}, {'Nike': 109}, {'Shakira': 66},
-    {'Drake': 65}, {'Vin Diesel': 62}, {'Priyanka Chopra Jonas': 53}, {'9GAG': 52}
+     {'Selena Gomez': 174}, {'Kylie Jenner': 172}, {'Kim Kardashian': 167}, {'Lionel Messi': 149},
+    {'Beyoncé': 145}, {'Neymar': 138}, {'National Geographic': 135}, {'Justin Bieber': 133},
+    {'Taylor Swift': 131}, {'Nike': 109}, {'Shakira': 66}, {'Drake': 65}, {'Vin Diesel': 62},
+    {'Priyanka Chopra Jonas': 53}, {'9GAG': 52}
 ]
 
 # ======================================================================================================================
@@ -38,14 +38,16 @@ hol = ' '
 p = 0
 l = []
 for i in range(0, 2):
-    l.append((random.choice((data))))
+    l.append(random.choice(data))
+    print(l)
+print(l[0].keys())
+print(vs)
+print(l[1].keys())
+hol = input("Type H for high and L for lower")
 
-
-def highlow():
-    global hol, p, l, data
-    if hol == "h":
-        global hol, p, l, data
-        if l[0].values() > l[1].values():
+while (hol == "h") or (hol == "l"):
+    while hol == "h":
+        if (l[0].values()) > (l[1].values()):
             print("you got a point")
             l.remove(l[1])
             l.append(l[0])
@@ -54,12 +56,11 @@ def highlow():
             print(vs)
             print(l[1].keys())
             hol = input("Type H for high and L for lower")
-            highlow()
         else:
             print("you loose")
-    elif hol == "l":
-        global hol, p, l, data
-        if l[0].values() < l[1].values():
+            hol = ' '
+    while hol == "l":
+        if (l[0].values()) < (l[1].values()):
             l.remove(l[1])
             l.append(l[0])
             print("you got a point")
@@ -68,10 +69,8 @@ def highlow():
             print(vs)
             print(l[1].keys())
             hol = input("Type H for high and L for lower")
-            highlow()
         else:
             print("you loose")
+            hol = ' '
     else:
-        None
-
-highlow()
+        hol = ' '
