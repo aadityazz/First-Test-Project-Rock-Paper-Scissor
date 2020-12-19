@@ -36,41 +36,51 @@ vs = """
 print(logo)
 hol = ' '
 p = 0
-l = []
-for i in range(0, 2):
-    l.append(random.choice(data))
-    print(l)
-print(l[0].keys())
+l1=''
+l2=''
+l1=random.choice(data)
+l2=random.choice(data)
+
+a=list(l1.keys())
+b=list(l2.keys())
+
+print(l1.keys())
 print(vs)
-print(l[1].keys())
+print(l2.keys())
 hol = input("Type H for high and L for lower")
 
 while (hol == "h") or (hol == "l"):
     while hol == "h":
-        if (l[0].values()) > (l[1].values()):
+        if (list(l1.values())) > (list(l2.values())):
             print("you got a point")
-            l.remove(l[1])
-            l.append(l[0])
+            l2.clear()
+            l2 = random.choice(data)
             p = +1
-            print(l[0].keys())
+            a = l1.keys()
+            b = l2.keys()
+            print(l1.keys())
             print(vs)
-            print(l[1].keys())
+            print(l2.keys())
             hol = input("Type H for high and L for lower")
         else:
             print("you loose")
             hol = ' '
     while hol == "l":
-        if (l[0].values()) < (l[1].values()):
-            l.remove(l[1])
-            l.append(l[0])
+        if (list(l1.values())) < (list(l2.values())):
+            l1.clear()
+            l1 = random.choice(data)
             print("you got a point")
             p = +1
-            print(l[0].keys())
+            a = l1.keys()
+            b = l2.keys()
+            print(l1.keys())
             print(vs)
-            print(l[1].keys())
+            print(l2.keys())
             hol = input("Type H for high and L for lower")
         else:
             print("you loose")
             hol = ' '
     else:
         hol = ' '
+
+print("your total points are", p)
