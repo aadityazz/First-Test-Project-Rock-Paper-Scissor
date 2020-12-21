@@ -1,0 +1,81 @@
+'''menu = {
+    "espresso": {"ingredients": {"water": 50, "coffee": 18}, "cost": 1.5},
+    "latte": {"ingredients": {"water": 200, "milk": 150, "coffee": 24}, "cost": 2.5},
+    "cappuccino": {"ingredients": {"water": 250, "milk": 100, "coffee": 24}, "cost": 3.0}
+}'''
+
+water = 3000
+milk = 2000
+coffee = 1000
+machine = 'on'
+
+while machine != 'off':
+    a = int(input("enter your choices [Express(1), Latte(2), Cappuccino(3)]"))
+
+
+    if a == 1:
+        water = water - 50
+        coffee = coffee - 18
+        if water<0 or coffee <0:
+            print('No specific ingredient')
+        else:
+            print("you need to pay:$", 1.5)
+    elif a == 2:
+        water = water - 200
+        coffee = coffee - 24
+        milk = milk - 150
+        if water<0 or coffee<0 or milk < 0:
+            print('No specific ingredient')
+        else:
+            print("you need to pay:$", 2.5)
+    elif a == 3:
+        water = water - 200
+        coffee = coffee - 24
+        milk = milk - 150
+        if water<0 or coffee<0 or milk < 0:
+            print('No specific ingredient')
+        else:
+            print("you need to pay:$", 3.0)
+    else:
+        print("you did wrong operation")
+
+    if a == 1:
+        quater = int(input("enter your quater"))
+        dollar = int(input("enter your dollar"))
+        c = dollar + quater * (0.25)
+        if c == 1.5:
+            print("here is your Expresso")
+        elif c < 1.5:
+            print("Sorry that is not enough money, Your money is refunded")
+        elif c > 1.5:
+            p = c-1.5
+            print("Here is your change", p)
+
+    elif a == 2:
+        quater = int(input("enter your quater"))
+        dollar = int(input("enter your dollar"))
+        c = dollar + quater * (0.25)
+        if c == 2.5:
+            print("here is your Latte")
+        elif c < 2.5:
+            print("Sorry that is not enough money, Your money is refunded")
+        elif c > 2.5:
+            p = c-2.5
+            print("Here is your change", p)
+
+    elif a == 3:
+        quater = int(input("enter your quater"))
+        dollar = int(input("enter your dollar"))
+        c = dollar + quater * (0.25)
+        if c == 3.0:
+            print("here is your Cappuccino")
+        elif c < 3.0:
+            print("Sorry that is not enough money, Your money is refunded")
+        elif c > 3.0:
+            p = c-3.0
+            print("Here is your change", p)
+    else:
+        None
+
+    machine = input("admin, do you want to off the machiene:(off)"
+                    "leave this option if you want to keep machine off")
