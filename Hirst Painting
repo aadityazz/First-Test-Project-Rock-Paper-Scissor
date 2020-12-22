@@ -1,0 +1,30 @@
+import turtle
+import random
+
+colours = ["CornflowerBlue", "DarkOrchid", "IndianRed", "DeepSkyBlue", "LightSeaGreen", "wheat", "SlateGray", "SeaGreen"]
+
+tiggy= turtle.Turtle()
+tiggy.shape("turtle")
+
+tiggy.speed("fastest")
+
+tiggy.right(135)
+for i in range(0,11):
+    tiggy.penup()
+    tiggy.forward(10)
+
+tiggy.left(135)
+
+for j in range(0,10):
+    tiggy.penup()
+    tiggy.left(175)
+    tiggy.forward(386)
+    tiggy.right(175)
+    tiggy.pendown()
+    for i in range(0,11):
+        tiggy.penup()
+        tiggy.dot(20, random.choice(colours))
+        tiggy.forward(35)
+        tiggy.pendown()
+        
+# This code is little wierd so, I'll make this code more good enough soon
