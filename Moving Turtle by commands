@@ -1,0 +1,33 @@
+import turtle
+
+tiggy = turtle.Turtle()
+tiggy.shape("turtle")
+screen = turtle.Screen()
+
+
+def turn_right():
+    new_heading = tiggy.heading() - 10
+    tiggy.setheading(new_heading)
+
+
+def turn_left():
+    new_heading = tiggy.heading() + 10
+    tiggy.setheading(new_heading)
+
+
+def clear():
+    tiggy.clear()
+    tiggy.penup()
+    tiggy.home()
+    tiggy.pendown()
+
+
+screen.listen()
+
+screen.onkey(fun=tiggy.forward(10), key="D")
+screen.onkey(fun=tiggy.backward(10), key="A")
+screen.onkey(fun=turn_left(),key= "W")
+screen.onkey(fun=turn_right(), key="S")
+screen.onkey(fun=clear(), key="C")
+
+screen.exitonclick()
