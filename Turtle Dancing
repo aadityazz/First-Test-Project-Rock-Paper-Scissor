@@ -1,0 +1,19 @@
+import turtle
+import random
+
+colours = ["CornflowerBlue", "DarkOrchid", "IndianRed", "DeepSkyBlue", "LightSeaGreen", "wheat", "SlateGray", "SeaGreen"]
+
+tiggy= turtle.Turtle()
+tiggy.shape("turtle")
+
+directions = [0, 90, 180, 270]
+
+tiggy.pensize(15)
+tiggy.speed("fastest")
+
+i=0
+while i==0:
+    tiggy.color(random.choice(colours))
+    tiggy.forward(30)
+    tiggy.setheading(random.choice(directions))
+    i=0
