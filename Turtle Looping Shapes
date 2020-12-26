@@ -1,0 +1,14 @@
+import turtle
+import random
+
+colours = ["CornflowerBlue", "DarkOrchid", "IndianRed", "DeepSkyBlue", "LightSeaGreen", "wheat", "SlateGray", "SeaGreen"]
+
+tiggy= turtle.Turtle()
+tiggy.shape("turtle")
+
+for j in range(4,11):
+    n=(360/j)
+    tiggy.color(random.choice(colours))
+    for i in range(0,j):
+        tiggy.forward(100)
+        tiggy.right(n)
