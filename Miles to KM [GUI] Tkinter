@@ -1,0 +1,25 @@
+from tkinter import *
+
+window = Tk()
+
+window.title("Calculator GUI")
+window.minsize(width=50, height=50)
+window.config(padx=100, pady=200)
+
+
+def onClickedin():
+    c = 1.60934 * float(input.get())
+    newtext = c
+    label.config(text=newtext)
+
+label = Label(text="Your Output")
+label.grid(column=5, row=5)
+
+input = Entry(width=10)
+print(input.get())
+input.grid(column=5, row=4)
+
+new_button = Button(text="Enter", command=onClickedin)
+new_button.grid(column=5, row=6)
+
+window.mainloop()
