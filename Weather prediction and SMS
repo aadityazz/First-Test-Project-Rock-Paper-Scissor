@@ -3,10 +3,10 @@ from twilio.rest import Client
 import os
 
 owner_Endpoint = "https://api.openweathermap.org/data/2.5/onecall"
-api_key = "2529f1adb0d24bbb562807a6beb6bc3d"
+api_key = "2529fb0d24bbb562807a6beb6bc3d"
 
-account_sid = "AC829bd5a973dc032b55d172dba69c90a2"
-auth_token = "b2588e0aae7d62fa2b106ff03fb2d51f"
+account_sid = "AC829bd73dc032b55d172dba69c90a2"
+auth_token = "b2588e0aae7fa2b106ff03fb2d51f"
 
 
 # http://api.openweathermap.org/data/2.5/weather?q=New%20Delhi&appid=2529f1adb0d24bbb562807a6beb6bc3d
