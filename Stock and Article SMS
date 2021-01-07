@@ -1,0 +1,46 @@
+import requests
+from datetime import date, datetime
+from twilio.rest import Client
+
+api_stock_key = "QPAJ252MMIAQUM"
+api_news_key = "baf3afa1a4f36add65a8d3e2bcf54"
+
+COMPANY_NAME = "Tesla Inc"
+
+STOCK_ENDPOINT = "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=IBM&apikey=demo"
+NEWS_ENDPOINT = "https://newsapi.org/v2/everything"
+
+news_params = {
+        "apiKey": api_news_key,
+        "qInTitle": COMPANY_NAME,
+    }
+
+news_response = requests.get(NEWS_ENDPOINT, params=news_params)
+articles = news_response.json()["articles"]
+three_articles = articles[:3]
+formatted_articles = [f"Headline: {article['title']}. \nBrief: {article['description']}" for article in three_articles]
+
+response = requests.get(
+    url="https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=IBM&apikey=QPAJ252MMIAQTOUM")
+data = response.json()
+
+t = date.today()
+time = f'"{t}"'
+t1 = t - datetime.timedelta(days=1)
+time1 = f'"{t1}"'
+a=data["Time Series (Daily)"][time]["2. high"]
+b=data["Time Series (Daily)"][time1]["2. high"]
+
+c=float(a)-float(b)
+formatted_articles = [f"Headline: {article['title']}. \nDifference={c}.\n Brief: {article['description']}" for article in three_articles]
+
+account_sid = "AC829bd5a973dc032b572dba69c90a2"
+auth_token = "2b374c893d9b6b999b95ea6d5df25"
+
+client = Client(account_sid, auth_token)
+message = client.messages \
+    .create(
+    body=formatted_articles,
+    from_='+17605376493',
+    to='+919793706277'
+)
