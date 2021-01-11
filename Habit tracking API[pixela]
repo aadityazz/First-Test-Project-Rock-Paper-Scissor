@@ -1,0 +1,45 @@
+import requests
+import datetime
+
+name = "aadityazz"
+token = "sdgwy38203heu830fh"
+graph = "grafhkizz02"
+
+# Creating ID
+
+siteEndpoint = "https://pixe.la/v1/users"
+paras = {
+    "token": token,
+    "username": name,
+    "agreeTermsOfService": "yes",
+    "notMinor": "yes"
+}
+
+graphEndpoint = f"{siteEndpoint}/{name}/{graph}"
+
+# Creating user graph
+
+graphPara = {
+    "id": graph,
+    "name": "Cycle",
+    "unit": "km",
+    "type": "float",
+    "color": "ajisai"
+}
+
+headers = {"X-USER-TOKEN": token}
+
+# Put the data as per dates
+
+pixelCreation = f"{siteEndpoint}/{name}/graph/{graph}"
+
+pixelData = {
+    "date": datetime.today.strftime("%Y%m%d"),
+    "quantity": "10.75"
+}
+
+# r= requests.(url= , json= ,header= )
+# print(r.text)
+
+# After Reading documents we can use delete and update method laterOn
+# https://docs.pixe.la/entry/post-graph
