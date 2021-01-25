@@ -1,0 +1,43 @@
+import requests
+from bs4 import BeautifulSoup
+import spotipy
+from spotipy.oauth2 import SpotifyOAuth
+
+date = input("enter your date choice in format of YYYY-MM-DD")
+id= input("Enter Spotify ID")
+url= f"https://www.billboard.com/charts/hot-100/{date}"
+
+uriList=[]
+
+response = requests.get(url)
+website_html = response.text
+soup = BeautifulSoup(website_html, "html.parser")
+
+all_songs = soup.find_all(name="span", class_="chart-element__information__song text--truncate color--primary")
+songs = [song.getText() for song in all_songs]
+
+with open("song.txt", mode="w") as file:
+    for song in songs:
+        file.write(f"{song}\n")
+        uriList.append(f"spotify:{song}:7dcb08249a1547670976d031cf3")
+
+ClientID = "7dcb08249a154767bc0730976d03"
+ClientSecret = "e561406b9b704bc08c947522cfb"
+
+
+sp = spotipy.Spotify(
+    auth_manager=SpotifyOAuth(
+        scope="playlist-modify-private",
+        redirect_uri="http://example.com/pythonTester",
+        client_id=ClientID,
+        client_secret=ClientSecret,
+        show_dialog=True,
+        cache_path="song.txt"
+    )
+)
+
+playlist = sp.user_playlist_create(user=id, name=f"{date} Billboard 100", public=False)
+print(playlist)
+for uri in uriList:
+    sp.user_playlist_add_tracks(user=id, playlist_id=playlist["id"], tracks=uri)
+
