@@ -1,0 +1,12 @@
+from selenium import webdriver
+
+chromeWebDriver = "D:\Code_Practice()\pDevelopement"
+driver = webdriver.Chrome(executable_path=chromeWebDriver)
+
+driver.get("https://www.python.org")
+
+time = driver.find_element_by_css_selector(".event-widget time")
+for search in time:
+    print(search.text)
+
+driver.close()
