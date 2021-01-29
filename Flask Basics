@@ -6,12 +6,12 @@ app = Flask(__name__)
 a = random.randint(1, 4)
 
 
-@app.route('/hello')
+@app.route('/')
 def hello_world():
     return 'hello bro'
 
 
-@app.route('/1')
+@app.route("<int:a>")
 def hello1():
     global a
     if a == 1:
@@ -25,8 +25,8 @@ def hello1():
                '<img src="https://media.giphy.com/media/iZGpuaRKdEZoI/giphy.gif" width=250 >'
 
 
-@app.route('/2')
-def hello1():
+@app.route("<int:a>")
+def hello2():
     global a
     if a == 2:
         return 'yos you are right' \
@@ -39,8 +39,8 @@ def hello1():
                '<img src="https://media.giphy.com/media/iZGpuaRKdEZoI/giphy.gif" width=250 >'
 
 
-@app.route('/3')
-def hello1():
+@app.route("<int:a>")
+def hello3():
     global a
     if a == 3:
         return 'yos you are right' \
@@ -61,6 +61,7 @@ def writing():
 @app.route("/username/<name>/<int:number>")
 def gem(name, number):
     return f"hello{name}, you are {number} year old!"
-    
+
+
 if __name__ == "__main__":
     app.run(debug=True)
