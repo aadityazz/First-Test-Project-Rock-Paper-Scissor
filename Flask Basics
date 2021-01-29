@@ -61,3 +61,6 @@ def writing():
 @app.route("/username/<name>/<int:number>")
 def gem(name, number):
     return f"hello{name}, you are {number} year old!"
+    
+if __name__ == "__main__":
+    app.run(debug=True)
