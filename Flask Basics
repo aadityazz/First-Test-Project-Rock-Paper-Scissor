@@ -1,0 +1,63 @@
+from flask import Flask
+import random
+
+app = Flask(__name__)
+
+a = random.randint(1, 4)
+
+
+@app.route('/hello')
+def hello_world():
+    return 'hello bro'
+
+
+@app.route('/1')
+def hello1():
+    global a
+    if a == 1:
+        return 'yos you are right' \
+               '<img src="https://media.giphy.com/media/l4HodBpDmoMA5p9bG/giphy.gif" width=250>'
+    elif a > 1:
+        return 'you need to up' \
+               '<img src="https://media.giphy.com/media/iZGpuaRKdEZoI/giphy.gif" width=250 >'
+    else:
+        return 'you need to down' \
+               '<img src="https://media.giphy.com/media/iZGpuaRKdEZoI/giphy.gif" width=250 >'
+
+
+@app.route('/2')
+def hello1():
+    global a
+    if a == 2:
+        return 'yos you are right' \
+               '<img src="https://media.giphy.com/media/l4HodBpDmoMA5p9bG/giphy.gif" width=250>'
+    elif a > 2:
+        return 'you need to up' \
+               '<img src="https://media.giphy.com/media/iZGpuaRKdEZoI/giphy.gif" width=250 >'
+    else:
+        return 'you need to down' \
+               '<img src="https://media.giphy.com/media/iZGpuaRKdEZoI/giphy.gif" width=250 >'
+
+
+@app.route('/3')
+def hello1():
+    global a
+    if a == 3:
+        return 'yos you are right' \
+               '<img src="https://media.giphy.com/media/l4HodBpDmoMA5p9bG/giphy.gif" width=250>'
+    elif a > 3:
+        return 'you need to up' \
+               '<img src="https://media.giphy.com/media/iZGpuaRKdEZoI/giphy.gif" width=250 >'
+    else:
+        return 'you need to down' \
+               '<img src="https://media.giphy.com/media/iZGpuaRKdEZoI/giphy.gif" width=250 >'
+
+
+@app.route('/bye')
+def writing():
+    return 'bye!'
+
+
+@app.route("/username/<name>/<int:number>")
+def gem(name, number):
+    return f"hello{name}, you are {number} year old!"
