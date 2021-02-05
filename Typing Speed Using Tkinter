@@ -1,0 +1,59 @@
+from tkinter import *
+import random
+import time
+
+paragraph = ["The Moon is a barren, rocky world without air and water. It has dark lava plain on its surface.",
+             "The Solar System consists of the Sun Moon and Planets. It also consists of comets, meteoroids and asteroids.",
+             "The sun is a huge ball of gases. It is so huge that it can hold millions of planets " ]
+
+start = 0
+li = []
+lo=[]
+text = random.choice(paragraph)
+w = 0
+answer = 0
+written = " "
+
+# Creating a new window and configurations
+window = Tk()
+window.title("Typing Speed")
+window.minsize(width=500, height=200)
+
+# Labels
+label = Label(text=text)
+label.grid(column=1, row=0)
+
+
+def action():
+    global start
+    button = Button(text="Finish", height=2, width=10, command=finish)
+    button.grid(column=1, row=1)
+    start = time.time()
+
+
+def finish():
+    global start, written, li, text, w, answer, lo, texting
+    button = Button(text="Start", height=2, width=10, command=action)
+    button.grid(column=1, row=1)
+    end = time.time()
+    written = texting.get()
+    lo = list(text.split(" "))
+    li = list(written.split(" "))
+    for i in li:
+        if i == lo:
+            w = w + 1
+
+    answer = w / (end - start)
+
+    label = Label(text= f"Your speed is: {int(answer)} wps")
+    label.grid(column=1, row=3)
+
+
+button = Button(text="Start", height=2, width=10, command=action)
+button.grid(column=1, row=1)
+
+texting = Entry( width=100)
+texting.insert(END, string="")
+texting.grid(column=1, row=2)
+
+window.mainloop()
