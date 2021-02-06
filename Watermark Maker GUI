@@ -1,0 +1,55 @@
+from tkinter import *
+from PIL import Image, ImageDraw, ImageFont
+
+
+def processing():
+    takeText = take.get()
+    giveText = give.get()
+
+    # Create an Image Object from an Image
+    im = Image.open(giveText)
+    width, height = im.size
+
+    draw = ImageDraw.Draw(im)
+    text = takeText
+
+    font = ImageFont.truetype('arial.ttf', 36)
+    textwidth, textheight = draw.textsize(text, font)
+
+    # calculate the x,y coordinates of the text
+    margin = 10
+    x = width - textwidth - margin
+    y = height - textheight - margin
+
+    # draw watermark in the bottom right corner
+    draw.text((x, y), text, font=font)
+    im.show()
+
+    # Save watermarked image
+    im.save("watermark.jpeg")
+
+    saving = Label(text="Your watermarked photo is saved on Desktop")
+    saving.grid(column=1, row=4)
+
+
+# UI set up
+
+window = Tk()
+window.title("Watermark Generating")
+window.minsize(width=320, height=150)
+
+label = Label(text="Watermark Generator")
+label.grid(column=1, row=0)
+
+button = Button(text="Start", height=2, width=10, command=processing)
+button.grid(column=1, row=1)
+
+give = Entry(width=50)
+give.insert(END, string="Enter Link of photo")
+give.grid(column=1, row=2)
+
+take = Entry(width=50)
+take.insert(END, string="Watermark")
+take.grid(column=1, row=3)
+
+window.mainloop()
